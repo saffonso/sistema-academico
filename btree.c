@@ -1,8 +1,4 @@
 #include "btree.h"
-
-// ==================== FUNÇÕES DE CHAVE ====================
-
-// Compara duas chaves: retorna <0 se k1<k2, 0 se k1==k2, >0 se k1>k2
 int key_compare(Key *k1, Key *k2) {
     if (k1->type != k2->type) {
         fprintf(stderr, "Erro: tipos de chave incompatíveis\n");
@@ -48,7 +44,6 @@ Key create_string_key(const char *value) {
     return key;
 }
 
-// ==================== FUNÇÕES DE NÓ ====================
 
 // Cria um novo nó
 BTreeNode* btree_node_create(bool is_leaf, KeyType key_type) {
@@ -109,8 +104,6 @@ void btree_node_save(BTree *tree, BTreeNode *node) {
 void btree_node_free(BTreeNode *node) {
     free(node);
 }
-
-// ==================== FUNÇÕES DE ÁRVORE ====================
 
 // Cria uma nova árvore B
 BTree* btree_create(const char *idx_filename, KeyType key_type) {
@@ -184,8 +177,6 @@ void btree_close(BTree *tree) {
     }
 }
 
-// ==================== BUSCA ====================
-
 // Busca uma chave no nó (recursivo)
 long btree_search_node(BTree *tree, BTreeNode *node, Key key) {
     int i = 0;
@@ -221,8 +212,6 @@ long btree_search(BTree *tree, Key key) {
     btree_node_free(root);
     return result;
 }
-
-// ==================== INSERÇÃO ====================
 
 // Divide um nó filho cheio
 void btree_split_child(BTree *tree, BTreeNode *parent, int index) {
@@ -357,8 +346,6 @@ bool btree_insert(BTree *tree, Key key, long offset) {
     btree_node_free(root);
     return true;
 }
-
-// ==================== REMOÇÃO ====================
 
 // Junta um nó com seu irmão
 void btree_merge(BTree *tree, BTreeNode *node, int index) {
@@ -656,8 +643,6 @@ bool btree_delete(BTree *tree, Key key) {
     btree_node_free(root);
     return true;
 }
-
-// ==================== TRAVESSIA ====================
 
 // Adiciona par chave-offset à lista (expande se necessário)
 static void add_pair_to_list(KeyOffsetList *list, Key key, long offset) {

@@ -30,19 +30,15 @@ char *extrair_campo_csv(char **linha)
 
     char *start = *linha;
     char *end;
-
-    // Pular espaços iniciais
     while (*start == ' ')
         start++;
 
-    // Se o campo começa com aspas
     if (*start == '"')
     {
-        start++; // Pula a aspa inicial
+        start++; 
         end = start;
         int found_quote = 0;
 
-        // Procura pela aspa de fechamento
         while (*end && *end != '"')
         {
             end++;
@@ -55,10 +51,9 @@ char *extrair_campo_csv(char **linha)
             end++;
         }
 
-        // Se encontramos a aspa, pular espaços e vírgula
         if (found_quote)
         {
-            // Pula espaços em branco
+
             while (*end == ' ' || *end == '\t')
                 end++;
             if (*end == ',')
@@ -67,7 +62,6 @@ char *extrair_campo_csv(char **linha)
     }
     else
     {
-        // Campo sem aspas - procura pela vírgula
         end = start;
         while (*end && *end != ',' && *end != '\n' && *end != '\r')
         {
@@ -127,17 +121,14 @@ int importar_alunos(const char *csv_filename, AlunoManager *manager)
         linha_num++;
         remover_newline(linha);
 
-        // Debug print
         printf("Processando aluno linha %d: %s\n", linha_num, linha);
 
-        // Ignora linhas vazias
         if (strlen(linha) == 0)
             continue;
 
         char *ptr = linha;
         Aluno aluno;
 
-        // Extrai campos: matricula,nome_aluno,endereco,telefone,ano_ingresso,semestre_ingresso,data_nascimento
         char *campo;
 
         // matricula
@@ -244,29 +235,24 @@ int importar_disciplinas(const char *csv_filename, DisciplinaManager *manager)
     int count = 0;
     int linha_num = 0;
 
-    // Pula o cabeçalho (primeira linha)
     if (fgets(linha, sizeof(linha), file))
     {
         linha_num++;
     }
 
-    // Lê cada linha do arquivo
     while (fgets(linha, sizeof(linha), file))
     {
         linha_num++;
         remover_newline(linha);
 
-        // Debug print
         printf("Processando disciplina linha %d: %s\n", linha_num, linha);
 
-        // Ignora linhas vazias
         if (strlen(linha) == 0)
             continue;
 
         char *ptr = linha;
         Disciplina disciplina;
 
-        // Extrai campos: codigo_disciplina,nome_disciplina
         char *campo;
 
         // codigo_disciplina
@@ -341,17 +327,16 @@ int importar_matriculas(const char *csv_filename, MatriculaManager *manager)
         linha_num++;
         remover_newline(linha);
 
-        // Debug print
+
         printf("Processando matrícula linha %d: %s\n", linha_num, linha);
 
-        // Ignora linhas vazias
+
         if (strlen(linha) == 0)
             continue;
 
         char *ptr = linha;
         Matricula matricula;
 
-        // Extrai campos: id_matricula,matricula_aluno,codigo_disciplina,ano_letivo,semestre_letivo,media_final
         char *campo;
 
         // id_matricula

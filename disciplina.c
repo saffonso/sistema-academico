@@ -216,7 +216,6 @@ bool disciplina_deletar(DisciplinaManager *manager, const char *codigo_disciplin
     }
 
     // Cascade delete: remove todas as matrículas desta disciplina
-    // Esta função será implementada no módulo de matrícula
     matricula_deletar_por_disciplina(codigo_disciplina);
 
     // Remove da árvore B
@@ -225,9 +224,6 @@ bool disciplina_deletar(DisciplinaManager *manager, const char *codigo_disciplin
         return false;
     }
 
-    // Nota: O registro no .dat não é fisicamente removido,
-    // apenas o índice é atualizado (espaço pode ser reutilizado futuramente)
-
     return true;
 }
 
@@ -235,7 +231,7 @@ bool disciplina_deletar(DisciplinaManager *manager, const char *codigo_disciplin
 void disciplina_listar_todos(DisciplinaManager *manager) {
     if (!manager) return;
 
-    printf("\n=== Lista de Disciplinas ===\n");
+    printf("\n  Lista de Disciplinas  \n");
 
     KeyOffsetList *list = btree_get_all_pairs(manager->idx_tree);
 

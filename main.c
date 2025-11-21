@@ -25,15 +25,12 @@ void pausar()
 void exibir_menu_principal()
 {
     printf("\n");
-    printf("===========================================\n");
     printf("   SISTEMA DE GERENCIAMENTO ACADEMICO\n");
-    printf("===========================================\n");
     printf("1.  Gerenciar Alunos\n");
     printf("2.  Gerenciar Disciplinas\n");
     printf("3.  Gerenciar Matriculas\n");
     printf("4.  Consultas e Relatorios\n");
     printf("0.  Sair\n");
-    printf("===========================================\n");
     printf("Escolha uma opcao: ");
 }
 
@@ -45,16 +42,13 @@ void menu_alunos(AlunoManager *aluno_mgr)
     do
     {
         printf("\n");
-        printf("===========================================\n");
         printf("        GERENCIAMENTO DE ALUNOS\n");
-        printf("===========================================\n");
         printf("1. Criar novo aluno\n");
         printf("2. Buscar aluno por matricula\n");
         printf("3. Atualizar dados do aluno\n");
         printf("4. Deletar aluno\n");
         printf("5. Listar todos os alunos\n");
         printf("0. Voltar\n");
-        printf("===========================================\n");
         printf("Escolha uma opcao: ");
 
         if (scanf("%d", &opcao) != 1)
@@ -250,16 +244,13 @@ void menu_disciplinas(DisciplinaManager *disciplina_mgr)
     do
     {
         printf("\n");
-        printf("===========================================\n");
         printf("      GERENCIAMENTO DE DISCIPLINAS\n");
-        printf("===========================================\n");
         printf("1. Criar nova disciplina\n");
         printf("2. Buscar disciplina por codigo\n");
         printf("3. Atualizar dados da disciplina\n");
         printf("4. Deletar disciplina\n");
         printf("5. Listar todas as disciplinas\n");
         printf("0. Voltar\n");
-        printf("===========================================\n");
         printf("Escolha uma opcao: ");
 
         if (scanf("%d", &opcao) != 1)
@@ -419,9 +410,7 @@ void menu_matriculas(MatriculaManager *matricula_mgr)
     do
     {
         printf("\n");
-        printf("===========================================\n");
         printf("      GERENCIAMENTO DE MATRICULAS\n");
-        printf("===========================================\n");
         printf("1. Criar nova matricula\n");
         printf("2. Buscar matricula por ID\n");
         printf("3. Atualizar media final\n");
@@ -430,7 +419,6 @@ void menu_matriculas(MatriculaManager *matricula_mgr)
         printf("6. Listar matriculas por aluno\n");
         printf("7. Listar matriculas por disciplina\n");
         printf("0. Voltar\n");
-        printf("===========================================\n");
         printf("Escolha uma opcao: ");
 
         if (scanf("%d", &opcao) != 1)
@@ -625,14 +613,11 @@ void menu_consultas(AlunoManager *aluno_mgr, DisciplinaManager *disciplina_mgr, 
     do
     {
         printf("\n");
-        printf("===========================================\n");
         printf("       CONSULTAS E RELATORIOS\n");
-        printf("===========================================\n");
         printf("1. Historico de um aluno\n");
         printf("2. Lista de alunos em uma disciplina\n");
         printf("3. Relatorio geral de matriculas\n");
         printf("0. Voltar\n");
-        printf("===========================================\n");
         printf("Escolha uma opcao: ");
 
         if (scanf("%d", &opcao) != 1)
@@ -726,9 +711,7 @@ void menu_consultas(AlunoManager *aluno_mgr, DisciplinaManager *disciplina_mgr, 
 // Função para importar dados dos CSVs
 void importar_dados(AlunoManager *aluno_mgr, DisciplinaManager *disciplina_mgr, MatriculaManager *matricula_mgr)
 {
-    printf("\n===========================================\n");
     printf("       IMPORTACAO DE DADOS CSV\n");
-    printf("===========================================\n");
 
     // Importar alunos
     printf("\nImportando alunos de 'aluno (1).csv'...\n");
@@ -742,12 +725,10 @@ void importar_dados(AlunoManager *aluno_mgr, DisciplinaManager *disciplina_mgr, 
     printf("\nImportando matriculas de 'matricula_aluno (1).csv'...\n");
     int matriculas_importadas = importar_matriculas("matricula_aluno (1).csv", matricula_mgr);
 
-    printf("\n===========================================\n");
     printf("RESUMO DA IMPORTACAO:\n");
     printf("Alunos importados: %d\n", alunos_importados);
     printf("Disciplinas importadas: %d\n", disciplinas_importadas);
     printf("Matriculas importadas: %d\n", matriculas_importadas);
-    printf("===========================================\n");
 
     pausar();
 }

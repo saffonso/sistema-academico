@@ -235,7 +235,7 @@ bool aluno_deletar(AlunoManager *manager, int matricula) {
 void aluno_listar_todos(AlunoManager *manager) {
     if (!manager) return;
 
-    printf("\n=== Lista de Alunos ===\n");
+    printf("\n  Lista de Alunos \n");
     printf("%-15s | %-30s | %-20s\n", "Matrícula", "Nome", "Telefone");
     printf("-----------------------------------------------------------------\n");
 

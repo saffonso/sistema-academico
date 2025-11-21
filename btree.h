@@ -27,19 +27,19 @@ typedef struct {
 
 // Estrutura de um nó da Árvore B
 typedef struct BTreeNode {
-    bool is_leaf;              // Se é folha
-    int num_keys;              // Número de chaves no nó
-    Key keys[MAX_KEYS];        // Array de chaves
-    long offsets[MAX_KEYS];    // Offsets dos registros no arquivo .dat
-    long children[MAX_CHILDREN]; // Offsets dos nós filhos no arquivo .idx
-    long offset_self;          // Offset deste nó no arquivo .idx
+    bool is_leaf;    
+    int num_keys;              
+    Key keys[MAX_KEYS];      
+    long offsets[MAX_KEYS];    
+    long children[MAX_CHILDREN];
+    long offset_self;          
 } BTreeNode;
 
 // Estrutura de controle da Árvore B
 typedef struct {
-    FILE *idx_file;           // Arquivo de índice (.idx)
-    long root_offset;         // Offset da raiz no arquivo
-    KeyType key_type;         // Tipo de chave desta árvore
+    FILE *idx_file;          
+    long root_offset;         
+    KeyType key_type;         
 } BTree;
 
 // Funções de comparação de chaves
@@ -81,7 +81,7 @@ void btree_borrow_from_next(BTree *tree, BTreeNode *node, int index);
 void btree_fill(BTree *tree, BTreeNode *node, int index);
 void btree_delete_from_node(BTree *tree, BTreeNode *node, Key key);
 
-// Estrutura para coleta de pares chave-offset (substitui callbacks)
+
 typedef struct {
     Key key;
     long offset;
@@ -93,7 +93,6 @@ typedef struct {
     int capacity;
 } KeyOffsetList;
 
-// Funções de travessia (sem callbacks)
 KeyOffsetList* btree_get_all_pairs(BTree *tree);
 void keyoffset_list_free(KeyOffsetList *list);
 

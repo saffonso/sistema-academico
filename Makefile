@@ -1,7 +1,7 @@
 all: sga
 
 sga: *.c *.h
-	gcc -o sga *.c -Wall -Wextra -g -std=c11 -lm
+	gcc -o sga *.c
 
 clean:
 	rm -f sga *.o *.dat *.idx

@@ -271,7 +271,7 @@ bool matricula_deletar(MatriculaManager *manager, int id_matricula) {
 void matricula_listar_todos(MatriculaManager *manager) {
     if (!manager) return;
 
-    printf("\n=== Lista de Matrículas ===\n");
+    printf("\n   Lista de Matrículas   \n");
 
     KeyOffsetList *list = btree_get_all_pairs(manager->idx_tree);
 
